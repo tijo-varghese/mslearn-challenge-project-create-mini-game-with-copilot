@@ -42,8 +42,8 @@ def play_game():
             game_history.pop(0)
         print(f"{player_name}'s score: {player_score}")
         print(f"Computer score: {computer_score}")
-        print("Last 5 games:")
-        for i, (p_score, c_score, u_choice, c_choice, res) in enumerate(game_history[-5:], 1):
+        print(f"Last {len(game_history)} Games:")
+        for i, (p_score, c_score, u_choice, c_choice, res) in enumerate(game_history, 1):
             if "tie" in res.lower():
                 print(f"Game {i}: GREAT GAME ITS A TIE! {player_name} and Computer both chose {u_choice}")
             else:
