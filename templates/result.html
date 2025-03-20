@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game Result</title>
+</head>
+<body>
+    <h1>Game Result</h1>
+    <p>{{ player_name }} chose: {{ user_choice }}</p>
+    <p>Computer chose: {{ computer_choice }}</p>
+    <p>{{ result }}</p>
+    <p>{{ player_name }}'s score: {{ player_score }}</p>
+    <p>Computer score: {{ computer_score }}</p>
+    <h2>Last 5 games:</h2>
+    <ul>
+        {% for i, (p_score, c_score, u_choice, c_choice, res) in enumerate(game_history, 1) %}
+            <li>Game {{ i }}: {{ res }} - {{ player_name }} chose {{ u_choice }}, Computer chose {{ c_choice }}</li>
+        {% endfor %}
+    </ul>
+    {% if game_history|length == 5 %}
+        <h2>{{ winner }}</h2>
+    {% endif %}
+    <a href="{{ url_for('play_game') }}">Play Again</a>
+</body>
+</html>
